@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+       <input type="text" name="" id="en"><br>
+    <input type="text" name="" id="de"><br>
+    <button onclick="encrypt()">Encrypt</button>
+    <button onclick="decrypt()">Decrypt</button>
+    <script>
+        var encodingString;
+       function encrypt(){
+           var baseString=document.getElementById("en").value;
+           encodingString=window.btoa(baseString);
+           document.getElementById("de").value=encodingString;
+       }
+       function decrypt(){
+           var decodedString=window.atob(encodingString);
+           document.getElementById("de").value=decodedString;
+       }
+   </script>
+</body>
+</html>

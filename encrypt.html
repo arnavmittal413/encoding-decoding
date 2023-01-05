@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eazy Encrypt </title>
+    <link rel="stylesheet" href="./stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div class="container-1">
+        <h1>Eazy Encrypt</h1>
+        <p>HTML Code Encryption Decryption Tool. HTML Encrypt Hide all your HTML source code. Protect your HTML-code by
+            using JavaScript encryption</p>
+        <div class="container-2">
+            <h3>Paste Your HTML Code</h3>
+            <hr>
+            <textarea name="" id="cd-enc" placeholder="Write your HTML code here."></textarea>
+            <div class="btn-dv df aic jcsb fw drk_bg">
+                <div>
+                    <button class="en" onclick="encrypt()">Encrypt</button>
+                    <button class="den" onclick="decrypt()">Decrypt</button>
+
+                </div>
+                <div>
+                    <button class="CC" onclick="clearArea()">Clear Code</button>
+                </div>
+
+            </div>
+            <textarea name="" class="dd-enc" id="dd-enc" placeholder="Your output will be here."></textarea>
+            <div>
+                <button onclick="copycat()"><i class="fa fa-copy"></i>Copy code</button>
+                <button onclick="run()"><i class="fa fa-eye"></i>Preview</button>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        var encodingString;
+        function encrypt() {
+            var baseString = document.getElementById("cd-enc").value;
+            console.log(baseString);
+            encodingString = window.btoa(baseString);
+            document.getElementById("dd-enc").value = encodingString;
+        }
+        function decrypt() {
+            var decodedString = window.atob(encodingString);
+            document.getElementById("dd-enc").value = decodedString;
+        }
+        function clearArea() {
+            document.getElementById("cd-enc").value = " ";
+        }
+        function copycat() {
+            let text = document.getElementById("dd-enc").value;
+            navigator.clipboard.writeText(text);
+        }
+        function run(){
+
+        }
+    </script>
+</body>
+
+</html>
