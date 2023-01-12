@@ -35,16 +35,39 @@
                 <button onclick="copycat()"><i class="fa fa-copy"></i>Copy code</button>
                 <button onclick="run()"><i class="fa fa-eye"></i>Preview</button>
             </div>
+            
 
         </div>
     </div>
     <script>
-        var encodingString;
+        let encodingString = "<script>\n<!-- code by ARNAV MITTAL  -->\ndocument.write(unescape('";
         function encrypt() {
-            var baseString = document.getElementById("cd-enc").value;
+            let baseString = document.getElementById("cd-enc").value;
             console.log(baseString);
-            encodingString = window.btoa(baseString);
+            // encodingString = window.btoa(baseString);
+            // encodingString = baseString.replace("<", "%3C").replace("/>", "%3E");
+
+            for(let i = 0; i < baseString.length; i++){
+                let currentChar = baseString[i];
+                if(currentChar === "<"){
+                    currentChar = "%3C";
+                }
+                else if(currentChar.match(/\n/g)){
+                    currentChar = "";
+                }
+                else if(currentChar === "/"){
+                    currentChar = "";
+                }
+                else if(currentChar === ">"){
+                    currentChar = "%3E";
+                }
+                encodingString += currentChar;
+            }
+            encodingString += "'))\n</scrip";
+            encodingString += "t>";
+            // encodingString = baseString.replace("/>", "%3E");
             document.getElementById("dd-enc").value = encodingString;
+            encodingString = "<script>document.write(unescape('";
         }
         function decrypt() {
             var decodedString = window.atob(encodingString);
