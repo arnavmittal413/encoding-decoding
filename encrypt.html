@@ -7,7 +7,7 @@
     <title>Eazy Encrypt </title>
     <link rel="stylesheet" href="./stylesheet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="icon" type="image/x-ico" href="./favicon.ico">
 </head>
 
 <body>
@@ -35,43 +35,58 @@
                 <button onclick="copycat()"><i class="fa fa-copy"></i>Copy code</button>
                 <button onclick="run()"><i class="fa fa-eye"></i>Preview</button>
             </div>
-            
+
 
         </div>
     </div>
     <script>
-        let encodingString = "<script>\n<!-- code by ARNAV MITTAL  -->\ndocument.write(unescape('";
+        let encodingString = "<script>\n<!-- Encode by ARNAV MITTAL  -->\ndocument.write(unescape('";
         function encrypt() {
             let baseString = document.getElementById("cd-enc").value;
             console.log(baseString);
-            // encodingString = window.btoa(baseString);
-            // encodingString = baseString.replace("<", "%3C").replace("/>", "%3E");
 
-            for(let i = 0; i < baseString.length; i++){
+            for (let i = 0; i < baseString.length; i++) {
                 let currentChar = baseString[i];
-                if(currentChar === "<"){
+                if (currentChar === "<") {
                     currentChar = "%3C";
                 }
-                else if(currentChar.match(/\n/g)){
+                else if (currentChar.match(/\n/g)) {
                     currentChar = "";
                 }
-                else if(currentChar === "/"){
-                    currentChar = "";
+                else if (currentChar === "/") {
+                    currentChar = "/";
                 }
-                else if(currentChar === ">"){
+                else if (currentChar === ">") {
                     currentChar = "%3E";
                 }
                 encodingString += currentChar;
             }
             encodingString += "'))\n</scrip";
             encodingString += "t>";
-            // encodingString = baseString.replace("/>", "%3E");
+
             document.getElementById("dd-enc").value = encodingString;
             encodingString = "<script>document.write(unescape('";
         }
+
         function decrypt() {
-            var decodedString = window.atob(encodingString);
+            let decodedString = "";
+            let baseString = document.getElementById("cd-enc").value;
+            for (let i = 67; i < baseString.length-13; i++) {
+                if (baseString[i] === '%' && baseString[i + 1] === '3' && baseString[i + 2] === 'C') {
+                    decodedString += '<';
+                    i += 2;
+                }
+                else if (baseString[i] === '%' && baseString[i + 1] === '3' && baseString[i + 2] === 'E') {
+                    decodedString += '>';
+                    i += 2;
+                }
+                else {
+                    decodedString += baseString[i];
+                }
+            }
+
             document.getElementById("dd-enc").value = decodedString;
+            baseString = "";
         }
         function clearArea() {
             document.getElementById("cd-enc").value = " ";
@@ -80,9 +95,29 @@
             let text = document.getElementById("dd-enc").value;
             navigator.clipboard.writeText(text);
         }
-        function run(){
+        function run() {
 
         }
+        // let encodedString1;
+        // function fullEncrpyt() {
+
+        //     let baseCode = document.getElementById("cd-enc").value;
+        //     for (let i = 0; i < baseCode.length; i++) {
+        //         let currentChar = baseCode[i];
+        //         if (currentChar === "<") {
+        //             currentChar = "%3C";
+        //         }
+        //         else if (currentChar === "/") {
+        //             currentChar = "%2F";
+        //         }
+        //         else if (currentChar == ">") {
+        //             currentChar = "%3E";
+        //         }
+        //         encodedString1 += currentChar;
+        //     }
+        //     document.getElementById("dd-enc").value = encodingString1;
+
+        // }
     </script>
 </body>
 
