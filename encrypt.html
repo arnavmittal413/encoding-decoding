@@ -22,8 +22,9 @@
             <div class="btn-dv df aic jcsb fw drk_bg">
                 <div>
                     <button class="en" onclick="encrypt()">Encrypt</button>
+                    <button class="den" onclick="fullEncrypt()">full Encrypt</button>
                     <button class="den" onclick="decrypt()">Decrypt</button>
-
+                    
                 </div>
                 <div>
                     <button class="CC" onclick="clearArea()">Clear Code</button>
@@ -44,6 +45,11 @@
         function encrypt() {
             let baseString = document.getElementById("cd-enc").value;
             console.log(baseString);
+            if (baseString === "") {
+                window.alert("Please enter HTML code.");
+                document.getElementById("cd-enc").focus();
+                return false;
+            }
 
             for (let i = 0; i < baseString.length; i++) {
                 let currentChar = baseString[i];
@@ -65,7 +71,7 @@
             encodingString += "t>";
 
             document.getElementById("dd-enc").value = encodingString;
-            encodingString = "<script>document.write(unescape('";
+            encodingString = "<script>\n<!-- Encode by ARNAV MITTAL  -->\ndocument.write(unescape('";
         }
 
         function decrypt() {
@@ -118,6 +124,196 @@
         //     document.getElementById("dd-enc").value = encodingString1;
 
         // }
+
+        function fullEncrypt() {
+
+let encodingStr = "<script>\n<!-- Encode by ARNAV MITTAL  -->\ndocument.write(unescape('";
+let baseStr = document.getElementById("cd-enc").value;
+if (baseStr === "") {
+    window.alert("Please enter HTML code.");
+    document.getElementById("cd-enc").focus();
+    return false;
+}
+console.log(baseStr);
+
+for (let i = 0; i < baseStr.length; i++) {
+    let currenctch = baseStr[i];
+    if (currenctch == "<") {
+        currenctch = "%3C";
+    }
+    else if (currenctch == "/") {
+        currenctch = "%2F";
+    }
+    else if (currenctch == ">") {
+        currenctch = "%3E";
+    }
+    else if (currenctch == "A") {
+        currenctch = "%41";
+    }
+
+    else if (currenctch == "B") {
+        currenctch = "%42";
+    }
+    else if (currenctch == "C") {
+        currenctch = "%43";
+    }
+    else if (currenctch == "D") {
+        currenctch = "%44";
+    }
+    else if (currenctch == "E") {
+        currenctch = "%45";
+    }
+    else if (currenctch == "F") {
+        currenctch = "%46";
+    }
+    else if (currenctch == "G") {
+        currenctch = "%47";
+    }
+    else if (currenctch == "H") {
+        currenctch = "%48";
+    }
+    else if (currenctch == "I") {
+        currenctch = "%49";
+    }
+    else if (currenctch == "J") {
+        currenctch = "%4A";
+    }
+    else if (currenctch == "K") {
+        currenctch = "%4B";
+    }
+    else if (currenctch == "L") {
+        currenctch = "%4C";
+    }
+    else if (currenctch == "M") {
+        currenctch = "%4D";
+    }
+    else if (currenctch == "N") {
+        currenctch = "%4E";
+    }
+    else if (currenctch == "O") {
+        currenctch = "%4F";
+    }
+    else if (currenctch == "P") {
+        currenctch = "%3E";
+    }
+    else if (currenctch == "Q") {
+        currenctch = "%51";
+    }
+    else if (currenctch == "R") {
+        currenctch = "%52";
+    }
+    else if (currenctch == "S") {
+        currenctch = "%53";
+    }
+    else if (currenctch == "T") {
+        currenctch = "%54";
+    }
+    else if (currenctch == "U") {
+        currenctch = "%55";
+    }
+    else if (currenctch == "V") {
+        currenctch = "%56";
+    }
+    else if (currenctch == "W") {
+        currenctch = "%57";
+    }
+    else if (currenctch == "X") {
+        currenctch = "%58";
+    }
+    else if (currenctch == "Y") {
+        currenctch = "%59";
+    }
+    else if (currenctch == "Z") {
+        currenctch = "%5A";
+    }
+    else if (currenctch == "a") {
+        currenctch = "%61";
+    }
+
+    else if (currenctch == "b") {
+        currenctch = "%62";
+    }
+    else if (currenctch == "c") {
+        currenctch = "%63";
+    }
+    else if (currenctch == "d") {
+        currenctch = "%64";
+    }
+    else if (currenctch == "e") {
+        currenctch = "%65";
+    }
+    else if (currenctch == "f") {
+        currenctch = "%66";
+    }
+    else if (currenctch == "g") {
+        currenctch = "%67";
+    }
+    else if (currenctch == "h") {
+        currenctch = "%68";
+    }
+    else if (currenctch == "i") {
+        currenctch = "%69";
+    }
+    else if (currenctch == "j") {
+        currenctch = "%6A";
+    }
+    else if (currenctch == "k") {
+        currenctch = "%6B";
+    }
+    else if (currenctch == "l") {
+        currenctch = "%6C";
+    }
+    else if (currenctch == "m") {
+        currenctch = "%6D";
+    }
+    else if (currenctch == "n") {
+        currenctch = "%6E";
+    }
+    else if (currenctch == "o") {
+        currenctch = "%6F";
+    }
+    else if (currenctch == "p") {
+        currenctch = "%70";
+    }
+    else if (currenctch == "q") {
+        currenctch = "%71";
+    }
+    else if (currenctch == "r") {
+        currenctch = "%72";
+    }
+    else if (currenctch == "s") {
+        currenctch = "%73";
+    }
+    else if (currenctch == "t") {
+        currenctch = "%74";
+    }
+    else if (currenctch == "u") {
+        currenctch = "%75";
+    }
+    else if (currenctch == "v") {
+        currenctch = "%76";
+    }
+    else if (currenctch == "w") {
+        currenctch = "%77";
+    }
+    else if (currenctch == "x") {
+        currenctch = "%78";
+    }
+    else if (currenctch == "y") {
+        currenctch = "%79";
+    }
+    else if (currenctch == "z") {
+        currenctch = "%7A";
+    }
+    encodingStr += currenctch;
+}
+encodingStr += "'))\n</scrip";
+encodingStr += "t>";
+document.getElementById("dd-enc").value = encodingStr;
+baseStr = "";
+
+}
+
     </script>
 </body>
 
